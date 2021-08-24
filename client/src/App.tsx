@@ -8,7 +8,7 @@ const App = () => {
     return (
       <Router>
         <Switch>
-          <Route path="/" exact render={(props) => <Main {...props} />} />
+          <Route path="/" exact render={() => <Main/>} />
           <Route path='/set-user' render={() => <SetUserPage/>}/>
           <Route render={() => <Page404/>}/>
         </Switch>
