@@ -1,9 +1,10 @@
 import React from 'react';
+import UserFormContainer from '../containers/UserFormContainer'
 
 const SetUserPage = () => {
     return (
-        <div>
-            set user page
+        <div className='Container'>
+            <UserFormContainer/>
         </div>
     )
 }
