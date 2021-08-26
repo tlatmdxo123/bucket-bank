@@ -1,0 +1,26 @@
+.Avatar{
+    position: relative;
+    .container{
+        width: 153px;
+        border-radius: 50%;
+        overflow: hidden;
+        @include align-center;
+        & img{
+            width: 100%;
+        }
+    }
+    
+    button{
+        position: absolute;
+        top: 50%;  
+
+    }
+    .prev{
+        left:0;
+        transform: translate(-50%,-50%);    
+    }
+    .next{
+        right:0;
+        transform: translate(50%,-50%);      
+    }
+}

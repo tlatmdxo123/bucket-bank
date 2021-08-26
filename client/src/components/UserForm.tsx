@@ -1,12 +1,16 @@
 import React from 'react';
-import Avatars from './Avatars';
-import Button from './Button';
-import UserInfoForm from './UserInfo';
+import Avatar from './Avatar';
 
-export const UserForm = () => {
+type UserFormProps = {
+    changeUserAvatar:(avatar:string) => void,
+    avatarType:string,
+}
+
+export const UserForm = ({changeUserAvatar,avatarType}:UserFormProps) => {
     return (
-    <div>
+        <>
+            <Avatar changeUserAvatar={changeUserAvatar} avatarType={avatarType}/>
+        </>
         
-    </div>
     )
 }

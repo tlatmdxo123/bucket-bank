@@ -1,0 +1,17 @@
+.IconButton{
+    border-radius: 50%;
+    background: #fff;
+    @include align-center;
+
+    &.small{
+        width: 30px;
+        height: 30px;
+        font-size: 24px;
+    }
+
+    &.big{
+        width: 54px;
+        height: 54px;
+    }
+
+}

@@ -1,0 +1,1 @@
+export const AVATAR_TYPES:Array<string> = ['bear','eagle','human','seal','wolf']
