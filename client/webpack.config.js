@@ -12,6 +12,7 @@ module.exports = {
   devServer: {
     port: "9500",
     contentBase: ["./public"],
+    historyApiFallback: true,
     open: true,
   },
   resolve: {
@@ -30,7 +31,7 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use:['style-loader','css-loader','sass-loader']
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },

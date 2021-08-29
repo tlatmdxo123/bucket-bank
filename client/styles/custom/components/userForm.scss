@@ -1,0 +1,31 @@
+.UserForm{
+    .input-wrap{
+        width: 377px;
+        margin-bottom: 60px;
+    }
+    .input-box{
+        display:flex;
+        width: 100%;
+        border-bottom: 1px solid $light-gray;
+        padding-bottom: 11px;
+        color:$font-lt-gray;
+    }
+    .tag{
+        color:$font-md-gray;
+        margin-right: 24px;
+    }
+    input{
+        flex-grow: 1;
+    }
+    
+    .error{
+        color:$red;
+        border-color: $red;
+    }
+    .active{
+        color:$blue;
+        border-color: $blue;
+    }
+
+    
+}

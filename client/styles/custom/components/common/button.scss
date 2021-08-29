@@ -1,0 +1,18 @@
+.Button{
+    background-color: #475AEF;
+    border:none;
+    color:#ffffff;
+    
+    &:disabled{
+        color:rgba(17,17,17,50%);
+        background-color: #E8E8E8;
+        border:1px solid #CED4DA;
+    }
+
+    &.big{
+        width: 324px;
+        height: 68px;
+        border-radius: 100px;
+    }
+
+}
