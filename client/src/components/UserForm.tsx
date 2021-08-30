@@ -1,5 +1,6 @@
 import React from 'react';
 import Avatar from './Avatar';
+import Title from './common/Title';
 import UserInfoForm from './UserInfoForm';
 
 type UserFormProps = {
@@ -19,6 +20,7 @@ export const UserForm = ({changeUserAvatar,avatarType,changeUserName,name,change
     return (
         <>
             <Avatar changeUserAvatar={changeUserAvatar} avatarType={avatarType}/>
+            <Title content='정보 설정하기'/>
             <UserInfoForm changeUserName={changeUserName} name={name} changeUserPay={changeUserPay} pay={pay} changeUserDate={changeUserDate} date={date} avatarType={avatarType}/>
         </>
         

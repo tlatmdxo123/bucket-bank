@@ -1,4 +1,9 @@
 .UserForm{
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .input-wrap{
         width: 377px;
         margin-bottom: 60px;
@@ -25,6 +30,9 @@
     .active{
         color:$blue;
         border-color: $blue;
+    }
+    .title{
+        margin-bottom: 40px;
     }
 
     

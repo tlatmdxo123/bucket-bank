@@ -1,7 +1,9 @@
 .Avatar{
     position: relative;
+    width: 153px;
+    margin-bottom: 50px;
     .container{
-        width: 153px;
+        width: 100%;
         border-radius: 50%;
         overflow: hidden;
         @include align-center;
