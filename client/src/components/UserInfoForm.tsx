@@ -14,15 +14,22 @@ type UserInfoFormProps = {
     changeUserDate:(date:string) => void,
     date:string,
     avatarType:string,
+    changeUserId:(id:string) => void
 }
-function UserInfoForm({changeUserName,name,changeUserPay,pay,changeUserDate,date,avatarType}:UserInfoFormProps) {
+function UserInfoForm({changeUserName,name,changeUserPay,pay,changeUserDate,date,avatarType,changeUserId}:UserInfoFormProps) {
     const history = useHistory();
     
     const submitUserInfo = async (e:React.FormEvent<HTMLFormElement>,userInfo:userInfoType) => {
         e.preventDefault();
         try {
-            await postUser<userInfoType>(userInfo)
-            history.push('/main')
+            const res = await postUser<userInfoType>(userInfo)
+            if(res.status === 200){
+                localStorage.setItem('user_id',res.data.id)
+                changeUserId(res.data.id)
+                history.push('/')
+            }else{
+                throw '요청에 실패했습니다.'
+            }
         } catch (error) {
             throw error
         }

@@ -1,4 +1,4 @@
-import {CHANGE_AVATAR,SET_USER_NAME,SET_USER_PAY,SET_USER_DATE} from '../types/setUserTypes'
+import {CHANGE_AVATAR,SET_USER_NAME,SET_USER_PAY,SET_USER_DATE,SET_USER_ID} from '../types/setUserTypes'
 import {SetUserType} from '../types/setUserTypes'
 
 export const changeAvatar = (avatarType:string):SetUserType => {
@@ -26,5 +26,12 @@ export const setUserDate = (date:string):SetUserType => {
     return {
         type:SET_USER_DATE,
         payload:date
+    }
+}
+
+export const setUserId = (id:string):SetUserType => {
+    return {
+        type:SET_USER_ID,
+        payload:id
     }
 }

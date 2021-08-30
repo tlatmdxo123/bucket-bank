@@ -5,5 +5,5 @@ const db = axios.create({
 })
 
 export const postUser = <T>(info:T) => {
-    db.post('/users',info)
+    return db.post('/users',info)
 }

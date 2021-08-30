@@ -12,16 +12,17 @@ type UserFormProps = {
     changeUserPay:(pay:string) => void,
     date:string,
     changeUserDate:(date:string) => void,
+    changeUserId:(id:string) => void
     
 }
 
-export const UserForm = ({changeUserAvatar,avatarType,changeUserName,name,changeUserPay,pay,changeUserDate,date}:UserFormProps) => {
+export const UserForm = ({changeUserAvatar,avatarType,changeUserName,name,changeUserPay,pay,changeUserDate,date,changeUserId}:UserFormProps) => {
     
     return (
         <>
             <Avatar changeUserAvatar={changeUserAvatar} avatarType={avatarType}/>
             <Title content='정보 설정하기'/>
-            <UserInfoForm changeUserName={changeUserName} name={name} changeUserPay={changeUserPay} pay={pay} changeUserDate={changeUserDate} date={date} avatarType={avatarType}/>
+            <UserInfoForm changeUserName={changeUserName} name={name} changeUserPay={changeUserPay} pay={pay} changeUserDate={changeUserDate} date={date} avatarType={avatarType} changeUserId={changeUserId}/>
         </>
         
     )

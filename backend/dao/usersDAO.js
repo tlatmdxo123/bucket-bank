@@ -28,11 +28,13 @@ export default class UsersDAO {
   }
 
   static async addUser(info) {
-    console.log(info);
+    const id = ObjectId();
     try {
       await users.insertOne({
+        _id:id,
         ...info,
       });
+      return id
     } catch (error) {
       return new Error(error);
     }
