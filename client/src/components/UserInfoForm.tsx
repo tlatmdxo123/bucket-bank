@@ -16,12 +16,13 @@ type UserInfoFormProps = {
     avatarType:string,
 }
 function UserInfoForm({changeUserName,name,changeUserPay,pay,changeUserDate,date,avatarType}:UserInfoFormProps) {
+    const history = useHistory();
     
     const submitUserInfo = async (e:React.FormEvent<HTMLFormElement>,userInfo:userInfoType) => {
         e.preventDefault();
         try {
             await postUser<userInfoType>(userInfo)
-            // history.push('/main')
+            history.push('/main')
         } catch (error) {
             throw error
         }
