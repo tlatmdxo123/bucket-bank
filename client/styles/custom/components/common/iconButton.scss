@@ -1,17 +1,24 @@
 .IconButton{
-    border-radius: 50%;
-    background: #fff;
+    
+    
     @include align-center;
 
+    &.round{
+        border-radius: 50%;
+    }
+    &.bg-white{
+        background: #fff;
+    }
+    &.white{
+        color:#fff;
+    }
     &.small{
         width: 30px;
         height: 30px;
         font-size: 24px;
     }
-
-    &.big{
-        width: 54px;
-        height: 54px;
+    &.medium{
+        font-size: 28px;
     }
 
 }
