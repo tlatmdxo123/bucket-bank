@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux'
 import setUser from './SetUserReducer'
+import setMenu from './MenuReducer'
 
 const rootReducer = combineReducers({
-    setUser
+    setUser,
+    setMenu
 })
 
 export default rootReducer

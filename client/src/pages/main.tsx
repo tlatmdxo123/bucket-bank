@@ -1,11 +1,17 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React, { useEffect } from 'react'
+import {getUser} from '../api/database'
+
 const Main = () => {
+    useEffect(() => {
+      const fetchUserData = async () => {
+          const id = localStorage.getItem('user_id')
+          const userInfo = await getUser(id)
+      }
+    })
     return (
-      <>
-        <div>main</div>
-        <Link to='/set-user'>set user</Link>
-      </>
+      <div className='Main'>
+        
+      </div>
     );
 }
 

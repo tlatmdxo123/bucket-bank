@@ -1,0 +1,50 @@
+.Menu{
+    position: absolute;
+    left: 0;
+    top: 0;
+    .ActiveMenu{
+        .wrapper{
+            @include align-dir-center(column);
+        }
+        .user-info{
+            width: 100%;
+            padding-top: 115px;
+            padding-bottom: 43px;
+            border-bottom: 1px solid $light-gray;
+        }
+        .icon{
+            width: 36px;
+            margin-right: 10px;
+            img{
+                width: 100%;
+            }
+        }
+        .menu-lists{
+            padding-top: 62px;
+        }
+        .menu-list{
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: 20px;
+            font-weight: bold;
+            color:$font-md-gray;
+            &.active{
+                color: $blue;
+            }
+        }
+
+        
+        width: 271px;
+        height: 100vh;
+        background: $white;
+        
+    }
+    .greet{
+        font-size: 18px;
+        font-weight: bold;
+        color:$font-lt-gray;
+        margin-top: 24px;
+    }
+
+}
