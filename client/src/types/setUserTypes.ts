@@ -1,24 +1,8 @@
-export const CHANGE_AVATAR = 'CHANGE_AVATAR' as const;
-export const SET_USER_NAME = 'SET_USER_NAME' as const;
-export const SET_USER_PAY = 'SET_USER_PAY' as const;
-export const SET_USER_DATE = 'SET_USER_DATE' as const;
-export const SET_USER_ID = 'SET_USER_ID' as const;
+export const SET_USER_DATA = 'SET_USER_DATA' as const
 
-export type SetUserType = {
-    type:string,
-    payload:string
-}
 
-export type SetUserState = {
-    avatarType:string,
-    name:string,
-    pay:string,
-    date:string,
-    error:string,
-    id:string,
-}
-
-export type userInfoType = {
+export type UserInfoType = {
+    _id?:string,
     name:string,
     pay:string,
     date:string,
@@ -27,7 +11,13 @@ export type userInfoType = {
     total_save:number,
 }
 
+export type SetUserDataType = {
+    type:string,
+    payload:UserInfoType,
+}
+
 
 export type SetUserAction = 
-    | SetUserType
+    | SetUserDataType 
+
 

@@ -6,7 +6,7 @@ export default class UserController {
 
     try {
       const user = await UsersDAO.getUser(id);
-      res.status(200).json({ data: user });
+      res.status(200).json(user[0]);
     } catch (error) {
       res.status(500).json({ error });
     }

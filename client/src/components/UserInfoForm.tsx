@@ -1,10 +1,8 @@
 import React from 'react';
 import {isCorrectUserName,isCorrectPay,isCorrectDate} from '../utils/inputCheck'
 import UserInput from './UserInput';
-import {userInfoType} from '../types/setUserTypes'
+import {UserInfoType} from '../types/setUserTypes'
 import Button from './common/Button';
-import { postUser } from '../api/database'
-import {useHistory} from 'react-router-dom'
 
 type UserInfoFormProps = {
     changeUserName:(name:string) => void,
@@ -14,26 +12,10 @@ type UserInfoFormProps = {
     changeUserDate:(date:string) => void,
     date:string,
     avatarType:string,
-    changeUserId:(id:string) => void
+    submitUserInfo:(e:React.FormEvent<HTMLFormElement>,info:UserInfoType)=>void
 }
-function UserInfoForm({changeUserName,name,changeUserPay,pay,changeUserDate,date,avatarType,changeUserId}:UserInfoFormProps) {
-    const history = useHistory();
+function UserInfoForm({changeUserName,name,changeUserPay,pay,changeUserDate,date,avatarType,submitUserInfo}:UserInfoFormProps) {
     
-    const submitUserInfo = async (e:React.FormEvent<HTMLFormElement>,userInfo:userInfoType) => {
-        e.preventDefault();
-        try {
-            const res = await postUser<userInfoType>(userInfo)
-            if(res.status === 200){
-                localStorage.setItem('user_id',res.data.id)
-                changeUserId(res.data.id)
-                history.push('/')
-            }else{
-                throw '요청에 실패했습니다.'
-            }
-        } catch (error) {
-            throw error
-        }
-    }
     const userInfo = {
         name,
         pay,
@@ -42,6 +24,7 @@ function UserInfoForm({changeUserName,name,changeUserPay,pay,changeUserDate,date
         current_pay:pay,
         total_save:0
     }
+
     const isDisabled = !(isCorrectUserName(name) && isCorrectPay(pay) && isCorrectDate(date))
     return (
         <form onSubmit={(e:React.FormEvent<HTMLFormElement>) => submitUserInfo(e,userInfo)}>

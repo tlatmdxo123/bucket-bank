@@ -1,29 +1,22 @@
-import {SetUserAction,SetUserState,CHANGE_AVATAR,SET_USER_NAME,SET_USER_PAY,SET_USER_DATE,SET_USER_ID} from '../types/setUserTypes'
+import {SetUserAction,SET_USER_DATA,UserInfoType} from '../types/setUserTypes'
 
-const initialState:SetUserState = {
+const initialState:UserInfoType = {
+    _id:'',
     avatarType:'bear',
     name:'',
     pay:'',
     date:'',
-    error:'',
-    id:''
+    current_pay:'',
+    total_save:0,
 }
 
 export default function setUser(
-    state:SetUserState = initialState,
+    state:UserInfoType = initialState,
     action:SetUserAction
-):SetUserState {
+):UserInfoType {
     switch(action.type){
-        case CHANGE_AVATAR:
-            return {...state,avatarType:action.payload}
-        case SET_USER_NAME:
-            return {...state,name:action.payload}
-        case SET_USER_PAY:
-            return {...state,pay:action.payload}
-        case SET_USER_DATE:
-            return {...state,date:action.payload}
-        case SET_USER_ID:
-            return {...state,id:action.payload}
+        case SET_USER_DATA:
+            return {...action.payload}
         default:
             return state
     }

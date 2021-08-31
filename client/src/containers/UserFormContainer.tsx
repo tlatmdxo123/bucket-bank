@@ -1,35 +1,49 @@
-import React from 'react'
-import {useDispatch,useSelector} from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { postUser } from '../api/database'
 import { UserForm } from '../components/UserForm'
-import {changeAvatar, setUserName,setUserPay,setUserDate,setUserId} from '../actions/SetUserActions'
-import {RootState} from '../reducers'
+import { UserInfoType } from '../types/setUserTypes'
+
 
 const UserFormContainer = () =>{
-    
-    const {avatarType,name,pay,date} = useSelector((state:RootState )=> ({
-        avatarType:state.setUser.avatarType,
-        name:state.setUser.name,
-        pay:state.setUser.pay,
-        date:state.setUser.date,
-    })) 
-    const dispatch = useDispatch()
+    const [avatarType,setAvatarType] = useState('bear')
+    const [name,setName] = useState('')
+    const [pay,setPay] = useState('')
+    const [date,setDate] = useState('')
+
     const changeUserAvatar = (avatarType:string):void => {
-        dispatch(changeAvatar(avatarType))
+        setAvatarType(avatarType)
     }
 
     const changeUserName = (name:string):void => {
-        dispatch(setUserName(name))
+        setName(name)
     }
 
     const changeUserPay = (pay:string):void => {
-        dispatch(setUserPay(pay))
+        setPay(pay)
     }
 
     const changeUserDate = (date:string):void => {
-        dispatch(setUserDate(date))
+        setDate(date)
     }
-    const changeUserId = (id:string):void => {
-        dispatch(setUserId(id))
+
+    const history = useHistory();
+    
+    const submitUserInfo = async (e:React.FormEvent<HTMLFormElement>,userInfo:UserInfoType) => {
+        e.preventDefault();
+        try {
+            const res = await postUser<UserInfoType>(userInfo)
+            if(res.status === 200){
+                localStorage.setItem('user_id',res.data.id)
+                
+                history.push('/')
+            }else{
+                throw '요청에 실패했습니다.'
+            }
+        } catch (error) {
+            throw error
+        }
     }
 
 
@@ -42,7 +56,7 @@ const UserFormContainer = () =>{
         pay,
         changeUserDate,
         date,
-        changeUserId
+        submitUserInfo
 
     }
     return <UserForm {...userFormProps}/>

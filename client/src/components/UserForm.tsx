@@ -1,5 +1,6 @@
 import React from 'react';
-import Avatar from './Avatar';
+import { UserInfoType } from '../types/setUserTypes';
+import AvatarSetter from './AvatarSetter';
 import Title from './common/Title';
 import UserInfoForm from './UserInfoForm';
 
@@ -12,17 +13,17 @@ type UserFormProps = {
     changeUserPay:(pay:string) => void,
     date:string,
     changeUserDate:(date:string) => void,
-    changeUserId:(id:string) => void
+    submitUserInfo:(e:React.FormEvent<HTMLFormElement>,info:UserInfoType)=>void,
     
 }
 
-export const UserForm = ({changeUserAvatar,avatarType,changeUserName,name,changeUserPay,pay,changeUserDate,date,changeUserId}:UserFormProps) => {
+export const UserForm = ({changeUserAvatar,avatarType,changeUserName,name,changeUserPay,pay,changeUserDate,date,submitUserInfo}:UserFormProps) => {
     
     return (
         <>
-            <Avatar changeUserAvatar={changeUserAvatar} avatarType={avatarType}/>
+            <AvatarSetter changeUserAvatar={changeUserAvatar} avatarType={avatarType}/>
             <Title content='정보 설정하기'/>
-            <UserInfoForm changeUserName={changeUserName} name={name} changeUserPay={changeUserPay} pay={pay} changeUserDate={changeUserDate} date={date} avatarType={avatarType} changeUserId={changeUserId}/>
+            <UserInfoForm changeUserName={changeUserName} name={name} changeUserPay={changeUserPay} pay={pay} changeUserDate={changeUserDate} date={date} avatarType={avatarType} submitUserInfo={submitUserInfo}/>
         </>
         
     )
