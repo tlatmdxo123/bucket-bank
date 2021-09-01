@@ -3,6 +3,7 @@ import {isCorrectUserName,isCorrectPay,isCorrectDate} from '../utils/inputCheck'
 import UserInput from './UserInput';
 import {UserInfoType} from '../types/setUserTypes'
 import Button from './common/Button';
+import { getCurrentDate } from '../utils/date';
 
 type UserInfoFormProps = {
     changeUserName:(name:string) => void,
@@ -15,12 +16,12 @@ type UserInfoFormProps = {
     submitUserInfo:(e:React.FormEvent<HTMLFormElement>,info:UserInfoType)=>void
 }
 function UserInfoForm({changeUserName,name,changeUserPay,pay,changeUserDate,date,avatarType,submitUserInfo}:UserInfoFormProps) {
-    
     const userInfo = {
         name,
         pay,
         date,
         avatarType,
+        created_at:getCurrentDate(),
         current_pay:pay,
         total_save:0
     }

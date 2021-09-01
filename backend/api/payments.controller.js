@@ -34,7 +34,7 @@ export default class PaymentsController {
               day,
           };
         });
-      res.status(200).json({ data: reponseData });
+      res.status(200).json(reponseData );
     } catch (error) {
       res.status(500).json({ error });
     }

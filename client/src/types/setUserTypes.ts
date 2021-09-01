@@ -3,6 +3,7 @@ export const SET_USER_DATA = 'SET_USER_DATA' as const
 
 export type UserInfoType = {
     _id?:string,
+    created_at:string,
     name:string,
     pay:string,
     date:string,

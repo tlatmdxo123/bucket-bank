@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { PayListTypes } from '../types/payTypes'
 import {UserInfoType} from '../types/setUserTypes'
 
 const db = axios.create({
@@ -10,6 +11,9 @@ export const postUser = <T>(info:T) => {
 }
 
 export const getUser = async (id:string):Promise<UserInfoType> => {
-    return await (await db.get(`/users?id=${id}`)).data
+    return  (await db.get(`/users?id=${id}`)).data
 }
 
+export const getPaymentList = async (userId:string,date:string):Promise<Array<PayListTypes>> => {
+    return  (await db.get(`/payments?id=${userId}&date=${date}`)).data
+}

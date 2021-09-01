@@ -2,7 +2,7 @@ import React,{MouseEvent} from 'react';
 
 type IconButtonProps = {
     icon:JSX.Element,
-    onClick:Function,
+    onClick?:Function,
     size:string,
     shape:string,
     background:string,
