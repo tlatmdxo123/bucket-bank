@@ -5,7 +5,7 @@ import { getDateFromCreatedToCurrent, unformatDate } from '../utils/date';
 import {PayListTypes} from '../types/payTypes'
 import PayHistory from '../components/PayHistory';
 function PayHistoryContainer() {
-    const {_id:userId,created_at} = useUserInfo();
+    const {_id:userId,created_at,date:pay_date,pay,current_pay} = useUserInfo();
     const [date,setDate] = useState('')
     const [dateLists,setDateLists] = useState<Array<string>>()
     const [paymentLists,setPaymentLists] = useState<Array<PayListTypes>>()
@@ -39,6 +39,9 @@ function PayHistoryContainer() {
         changeDate,
         paymentLists,
         setPaymentLists,
+        pay_date,
+        pay,
+        current_pay
     }
 
     
