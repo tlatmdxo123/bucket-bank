@@ -17,3 +17,15 @@ export const getUser = async (id:string):Promise<UserInfoType> => {
 export const getPaymentList = async (userId:string,date:string):Promise<Array<PayListTypes>> => {
     return  (await db.get(`/payments?id=${userId}&date=${date}`)).data
 }
+
+export const updatePayment = async <T>(info:T) => {
+    return await db.put(`/payments`,info)
+}
+
+export const addPayment = async <T>(info:T) => {
+    return await db.post(`/payments`,info)
+}
+
+export const deletePayment = async (id:string) => {
+    return await db.delete(`/payments?id=${id}`)
+}

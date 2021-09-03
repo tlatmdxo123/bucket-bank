@@ -17,7 +17,7 @@ export const getDateFromCreatedToCurrent = (created:string,current:Date):Array<s
 }
 export const getCurrentDate = () => {
     const current = new Date()
-    const month = current.getMonth()+1 < 10 ? '0'+current.getMonth()+1 : (current.getMonth()+1).toString()
+    const month = current.getMonth()+1 < 10 ? '0'+(current.getMonth()+1) : (current.getMonth()+1).toString()
     const year = current.getFullYear()
     return year+month
 }
@@ -32,4 +32,12 @@ export const unformatDate = (date:string) => {
     const year = date.slice(0,4)
     const month = date.slice(6,8)
     return year+month
+}
+
+export const getFullCurrentDate = () => {
+    const currentDate = new Date()
+    const year = currentDate.getFullYear()
+    const month = currentDate.getMonth()+1 < 10 ? '0'+(currentDate.getMonth()+1) : currentDate.getMonth()+1
+    const day = currentDate.getDate()
+    return [year,month,day].join('-')
 }

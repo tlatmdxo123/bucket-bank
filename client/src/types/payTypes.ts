@@ -1,6 +1,12 @@
 export type PayListTypes = {
-    _id:string,
+    id:string,
     content:string,
-    payment_amount:number,
-    payment_date:Date,
+    payment:string,
+    date:string,
+}
+
+export type updatePaymentType = {
+    id:string,
+    content:string,
+    payment:string
 }

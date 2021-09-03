@@ -1,0 +1,15 @@
+.PayHistoryIndex{
+    display:flex;
+    width: 100%;
+    padding: 38px 38px 13px 38px;
+    .index{
+        color:$font-lt-gray;
+        font-size: 18px;
+    }
+    .index:nth-child(odd){
+        width: 20%;
+    }
+    .index:nth-child(2){
+        width: 60%;
+    }
+}

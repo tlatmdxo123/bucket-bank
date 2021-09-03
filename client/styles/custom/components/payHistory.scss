@@ -1,0 +1,6 @@
+.PayHistory{
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    @include align-dir-center(column)
+}
