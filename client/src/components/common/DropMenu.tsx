@@ -8,7 +8,7 @@ type DropMenuProps = {
 
 function DropMenu({lists,onSelect}:DropMenuProps) {
     return (
-        <ul onClick={(e) => onSelect(e)}>
+        <ul className='DropMenu' onClick={(e) => onSelect(e)}>
             {lists.map(list => <DropMenuList text={list}/>)}
         </ul>
     );

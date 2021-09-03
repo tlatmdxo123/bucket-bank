@@ -5,7 +5,7 @@ type DropMenuListPropsTypes = {
 }
 function DropMenuList({text}:DropMenuListPropsTypes) {
     return (
-        <li>
+        <li className='dropMenuList'>
             {text}
         </li>
     );

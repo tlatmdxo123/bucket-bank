@@ -1,0 +1,17 @@
+.DateSelector{
+    position: relative;
+    margin-bottom: 90px;
+    .date{
+        font-size: 30px;
+        color:$font-md-gray;
+        font-weight: bold;
+        cursor: pointer;
+        @include align-center
+    }
+    .DropMenu{
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%,100%);
+    }
+}

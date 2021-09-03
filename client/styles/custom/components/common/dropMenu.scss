@@ -1,0 +1,15 @@
+.DropMenu{
+    box-shadow: 5px 5px 5px rgba(0,0,0,20%);
+    .dropMenuList{
+        width: 200px;
+        font-size: 13px;
+        font-weight: bold;
+        color:$font-md-gray;
+        padding: 8px;
+        background: $white;
+        
+        &:hover{
+            background: $lt-blue;
+        }
+    }
+}

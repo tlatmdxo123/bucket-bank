@@ -13,7 +13,7 @@ type DateSelectorPropsTypes = {
 function DateSelector({date,dateLists,changeDate}:DateSelectorPropsTypes) {
     const [isSelect,setIsSelect] = useState(false)
     return (
-        <div onClick={() => setIsSelect(!isSelect)}>
+        <div className='DateSelector' onClick={() => setIsSelect(!isSelect)}>
             <Date date={date} isSelect={isSelect} />
             {isSelect && <DropMenu lists={dateLists} onSelect={changeDate}/>}
         </div>

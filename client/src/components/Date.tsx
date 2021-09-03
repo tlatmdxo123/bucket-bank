@@ -9,7 +9,7 @@ type DatePropsTypes = {
 function Date({date,isSelect}:DatePropsTypes) {
     const formatedDate = formatDate(date)
     return (
-        <div className='Date'>
+        <div className='date'>
             <span>{formatedDate}</span>
             <div>
                 {isSelect ? <MdKeyboardArrowUp/> : <MdKeyboardArrowDown/>}
