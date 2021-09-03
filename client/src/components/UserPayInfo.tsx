@@ -6,14 +6,14 @@ type UserPayInfoPropsTypes = {
 }
 function UserPayInfo({pay_date,pay}:UserPayInfoPropsTypes) {
     return (
-        <div>
-            <div>
-                <span>매월</span>
-                <span>{pay_date}일</span>
+        <div className='UserPayInfo'>
+            <div className='contentWrap'>
+                <span className='label'>매월</span>
+                <span className='content'>{pay_date}일</span>
             </div>
-            <div>
-                <span>월급</span>
-                <span>{pay}원</span>
+            <div className='contentWrap'>
+                <span className='label'>월급</span>
+                <span className='content'>{pay}원</span>
             </div>
             
         </div>

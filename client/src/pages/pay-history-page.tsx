@@ -4,10 +4,10 @@ import PayHistoryContainer from '../containers/PayHistoryContainer';
 
 function PayHistoryPage() {
     return (
-        <div>
+        <>
             <MenuContainer/>
             <PayHistoryContainer/>
-        </div>
+        </>
     );
 }
 
