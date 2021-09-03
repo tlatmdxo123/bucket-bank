@@ -1,0 +1,70 @@
+.Modal{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,45%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include align-center;
+    .wrapper{
+        width: 420px;
+        background:$white;
+        border-radius: 14px;
+        padding: 59px 26px 17px 26px;
+    }
+    .title{
+        font-size: 20px;
+        color:$font-md-gray;
+        font-weight: bold;
+        margin-bottom: 57px;
+    }
+    .input{
+        width: 100%;
+        margin-bottom: 25px;
+        label{
+            display: flex;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .dot{
+            color:$red;
+        }
+        input{
+            width: 100%;
+            border: 1px solid $gray;
+            padding: 6px 8px;
+            &:focus{
+                border: 1px solid $blue;
+            }
+        }
+    }
+    .error{
+        color:$red
+    }
+    .buttons{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 211px;
+        button{
+            width: 77px;
+            height: 48px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+            @include align-center;
+        }
+        .submit{
+            background: $blue;
+            color:$white;
+            &:disabled{
+                background:rgba(17,17,17,50%);
+            }
+        }
+        .cancel{
+            border: 1px solid $blue;
+            color:$blue;
+        }
+    }
+}
