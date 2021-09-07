@@ -1,5 +1,6 @@
 .PayHistoryList{
     display: flex;
+    position: relative;
     width: 100%;
     background: $white;
     border-radius: 10px;
@@ -21,5 +22,10 @@
         font-size: 20px;
         font-weight: bold;
         width: 20%;
+    }
+    .DropMenu{
+        position: absolute;
+        right: 30px;
+        top: 30px;
     }
 }

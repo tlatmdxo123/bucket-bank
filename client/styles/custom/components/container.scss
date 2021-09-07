@@ -1,6 +1,5 @@
 .Container{
     width: 100vw;
-    height: 100vh;
-    background-color: $bg-gray;
-    @include align-center;
+    padding-top: 100px;
+    @include align-dir-center(column)
 }

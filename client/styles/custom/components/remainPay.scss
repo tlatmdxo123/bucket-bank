@@ -1,0 +1,18 @@
+.RemainPay{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    vertical-align: bottom;
+    .label{
+        padding-top: 7px;
+        font-size: 20px;
+        color:$font-md-gray;
+        margin-right: 15px;
+    }
+    .money{
+        font-size: 30px;
+        color:$red;
+
+    }
+}

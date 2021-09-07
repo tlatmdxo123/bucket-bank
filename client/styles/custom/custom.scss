@@ -1,6 +1,6 @@
 @import './variables.scss';
 @import './mixin.scss';
-
+@import './global.scss';
 @import './components/container.scss';
 @import './components/avatar.scss';
 @import './components/avatarSetter.scss';
@@ -11,6 +11,7 @@
 @import './components/payHistoryList.scss';
 @import './components/payHistoryLists.scss';
 @import './components/payHistoryIndex.scss';
+@import './components/remainPay.scss';
 @import './components/common/button.scss';
 @import './components/common/iconButton.scss';
 @import './components/common/title.scss';
