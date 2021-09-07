@@ -1,59 +1,57 @@
 import React, { useEffect, useState } from 'react';
-import { getPaymentList, updatePayment } from '../api/database';
 import {useUserInfo} from '../hooks/user'
-import { getDateFromCreatedToCurrent, unformatDate } from '../utils/date';
-import {PayListTypes, updatePaymentType} from '../types/payTypes'
+import { getCurrentDate, getDateFromCreatedToCurrent, isSameDate } from '../utils/date';
 import PayHistory from '../components/PayHistory';
+import { fetchPayData } from '../actions/PayHistoryActions';
+import {useDispatch, useSelector} from 'react-redux'
+import { RootState } from '../reducers';
+import { PayListTypes } from '../types/payTypes';
 function PayHistoryContainer() {
+    const dispatch = useDispatch()
     const {_id:userId,created_at,date:pay_date,pay,current_pay} = useUserInfo();
     const [date,setDate] = useState('')
     const [dateLists,setDateLists] = useState<Array<string>>()
-    const [paymentLists,setPaymentLists] = useState<Array<PayListTypes>>([])
+    const [remain,setRemain] = useState(0)
+    const currentDate = getCurrentDate()
+
+    const {payHistory} = useSelector((state:RootState) => ({
+        payHistory:state.setHistory.data,
+    }))
+
+    const isCurrentHistory = (pay:PayListTypes) => {
+        const paymentYearMonth = pay.payment_date.slice(0,6)
+        const paymentDay = pay.payment_date.slice(6)
+        const lastMonth = (+currentDate.slice(0,6)-1).toString()
+        return paymentYearMonth===lastMonth && (+paymentDay >= +pay_date) || isSameDate(pay.payment_date,currentDate)
+    }
+
     useEffect(() => {
          if(userId){
-            const currentDate = new Date()
-            let dates = getDateFromCreatedToCurrent(created_at,currentDate)
+            dispatch(fetchPayData(userId))
+            const currentFullDate = new Date()
+            let dates = getDateFromCreatedToCurrent(created_at,currentFullDate)
             setDateLists(dates)
-            const lastDate = dates[dates.length-1]
-            setDate(lastDate)
-            getUserPaymentList(lastDate)
+            setDate(dates[dates.length - 1])
         }
     },[userId])
 
-    const getUserPaymentList = async (date:string) => {
-        const lists = await getPaymentList(userId,date)
-        setPaymentLists(lists)
-    }
+    useEffect(() => {
+        const currRemain = +pay-payHistory.filter(isCurrentHistory).reduce((prev,curr) => (prev + +curr.payment_amount),0)
+        setRemain(currRemain)
+    },[payHistory])
 
-    const changeDate= async (e:React.MouseEvent<HTMLElement>) => {
-        const selectedDate = unformatDate((e.target as HTMLElement).textContent)
-        setDate(selectedDate)
-        const lists = await getPaymentList(userId,selectedDate)
-        setPaymentLists(lists)
-    }
 
-    const editPaymentList = async (list:PayListTypes) => {
-        const {id,content,payment} = list
-        try {
-            await updatePayment<updatePaymentType>({id,content,payment})
-            setPaymentLists(paymentLists.map(payment => payment.id === id && list))
-        } catch (error) {
-            throw error
-        }
-    }
 
     
     const props = {
         userId,
         date,
         dateLists,
-        changeDate,
-        paymentLists,
-        setPaymentLists,
-        editPaymentList,
         pay_date,
         pay,
-        current_pay
+        current_pay,
+        setDate,
+        remain
     }
 
     

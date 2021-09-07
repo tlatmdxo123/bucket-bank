@@ -1,32 +1,28 @@
 import React from 'react';
-import { getPaymentList } from '../api/database';
-import { PayListTypes } from '../types/payTypes';
-import { formatDate, unformatDate } from '../utils/date';
+import PayHistoryListsContainer from '../containers/PayHistoryListsContainer';
+import { formatDate } from '../utils/date';
 import DateSelector from './DateSelector';
-import PayHistoryLists from './PayHistoryLists';
+import RemainPay from './RemainPay';
 import UserPayInfo from './UserPayInfo';
 
 type PayHistoryPropsTypes = {
         userId:string,
         date:string,
         dateLists:Array<string>,
-        changeDate:(arg:React.MouseEvent<HTMLElement>) => void,
-        paymentLists:Array<PayListTypes>,
-        setPaymentLists:React.Dispatch<React.SetStateAction<PayListTypes[]>>,
-        editPaymentList:(list:PayListTypes) => void,
         pay_date:string,
         pay:string,
-        current_pay:string,
+        setDate:React.Dispatch<React.SetStateAction<string>>,
+        remain:number
     }
 
-function PayHistory({userId,date,dateLists,changeDate,paymentLists,setPaymentLists,pay_date,pay,current_pay}:PayHistoryPropsTypes) {
+function PayHistory({userId,date,dateLists,pay_date,pay,setDate,remain}:PayHistoryPropsTypes) {
     const formatedDateLists = dateLists.map(date => formatDate(date))
     return (
         <div className='PayHistory'>
-            <DateSelector date={date} dateLists={formatedDateLists} changeDate={changeDate}/>
+            <DateSelector date={date} dateLists={formatedDateLists} setDate={setDate}/>
             <UserPayInfo pay_date={pay_date} pay={pay}/>
-            <PayHistoryLists userId={userId} paymentLists={paymentLists} setPaymentLists={setPaymentLists} date={date}/>
-            {/* <RemainPay/> */}
+            <PayHistoryListsContainer date={date} user_id={userId}/>
+            <RemainPay remain={remain}/>
         </div>
     );
 }

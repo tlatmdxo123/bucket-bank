@@ -1,60 +1,32 @@
 import PaymentsDAO from "../dao/paymentsDAO.js";
+import { getCurrentDate } from "../utils/date.js";
 
 export default class PaymentsController {
   static async getPaymentsLists(req, res, next) {
     const userId = req.query.id;
-    const date = req.query.date;
-
     try {
       const data = await PaymentsDAO.getPaymentsLists(userId);
-      const reponseData = data
-        .filter((item) => {
-          const year = item.payment_date.getFullYear().toString();
-          const month =
-            item.payment_date.getMonth() >= 10
-              ? item.payment_date.getMonth().toString()
-              : "0" + (item.payment_date.getMonth() + 1);
-          const itemDate = year + month;
-          return date === itemDate;
-        })
-        .map((item) => {
-          const day =
-            item.payment_date.getDate() >= 10
-              ? item.payment_date.getDate()
-              : "0" + item.payment_date.getDate();
-          return {
-            id: item._id,
-            content: item.content,
-            payment: item.payment_amount,
-            date:
-              item.payment_date.getFullYear() +
-              "-" +
-              ("0" + (parseInt(item.payment_date.getMonth()) + 1)) +
-              "-" +
-              day,
-          };
-        });
-      res.status(200).json(reponseData );
+      res.status(200).json(data);
     } catch (error) {
       res.status(500).json({ error });
     }
   }
 
   static async addPaymentsList(req, res, next) {
-    const userId = req.body.id;
+    const userId = req.body.user_id;
     const content = req.body.content;
-    const payment = req.body.payment;
+    const payment = req.body.payment_amount;
 
     const paymentInfo = {
       user_id: userId,
       content,
       payment_amount: payment,
-      payment_date: new Date(),
+      payment_date: getCurrentDate(),
     };
 
     try {
-      await PaymentsDAO.addPaymentsList(paymentInfo);
-      res.status(200).json({ status: "success" });
+      const addInfo = await PaymentsDAO.addPaymentsList(paymentInfo);
+      res.status(200).json(addInfo);
     } catch (error) {
       res.status(500).json({ error });
     }
@@ -64,11 +36,11 @@ export default class PaymentsController {
     const paymentId = req.body.id;
     const updateInfo = {
       content: req.body.content,
-      payment_amount: req.body.payment,
+      payment_amount: req.body.payment_amount,
     };
     try {
       await PaymentsDAO.updatePaymentById(paymentId, updateInfo);
-      res.status(200).json({ status: "success" });
+      res.status(200).json({status:'success'})
     } catch (error) {
       res.status(500).json({ error });
     }

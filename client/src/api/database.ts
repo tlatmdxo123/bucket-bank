@@ -14,8 +14,8 @@ export const getUser = async (id:string):Promise<UserInfoType> => {
     return  (await db.get(`/users?id=${id}`)).data
 }
 
-export const getPaymentList = async (userId:string,date:string):Promise<Array<PayListTypes>> => {
-    return  (await db.get(`/payments?id=${userId}&date=${date}`)).data
+export const getPaymentList = async (userId:string):Promise<Array<PayListTypes>> => {
+    return  (await db.get(`/payments?id=${userId}`)).data
 }
 
 export const updatePayment = async <T>(info:T) => {

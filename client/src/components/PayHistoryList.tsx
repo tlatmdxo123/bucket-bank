@@ -1,47 +1,48 @@
 import React, { useState } from 'react';
-import { PayListTypes, updatePaymentType } from '../types/payTypes';
+import { PayListTypes, UpdatePaymentType } from '../types/payTypes';
 import {MdMoreVert} from 'react-icons/md'
-import { deletePayment, getPaymentList, updatePayment } from '../api/database';
 import PayHistoryModal from './PayHistoryModal';
+import { useDispatch } from 'react-redux';
+import { deletePayData, updatePayData } from '../actions/PayHistoryActions';
 
 type PayHistoryListPropsTypes = {
     payInfo:PayListTypes,
-    userId:string,
-    setPaymentLists:React.Dispatch<React.SetStateAction<PayListTypes[]>>,
 }
 
-function PayHistoryList({payInfo,userId,setPaymentLists}:PayHistoryListPropsTypes) {
+function PayHistoryList({payInfo}:PayHistoryListPropsTypes) {
+    const dispatch = useDispatch()
     const [isMenuActive,setIsMenuActive] = useState(false)
     const [isModalActive,setIsModalActive] = useState(false)
-    const {content,date,payment,id} = payInfo
-    const [year,month,day] = date.split('-')
+    const {content,payment_date,payment_amount,_id,user_id} = payInfo
 
-    const editPayHistory = async (content:string,payment:string) => {
-        try {
-            await updatePayment<updatePaymentType>({id,content,payment})
-            const newLists = await getPaymentList(userId,date)
-            setPaymentLists(newLists)
-        } catch (error) {
-            throw error
-        }
-    }
+    const month = payment_date.slice(4,6)
+    const day = payment_date.slice(6)
 
     const modalActive = () => {
         setIsMenuActive(false)
         setIsModalActive(true)
     }
 
-    const deleteMenu = async () => {
-        setIsMenuActive(false)
-        deletePayment(id)
-        const newLists = await getPaymentList(userId,date)
-        setPaymentLists(newLists)
+    const deletePayHistory = () => {
+        setIsModalActive(false)
+        dispatch(deletePayData(_id))
     }
+
+    const editPayHistory = (content:string,payment_amount:string) => {
+        const info:UpdatePaymentType = {
+            content,
+            payment_amount,
+            id:_id    
+        }
+        dispatch(updatePayData(info))
+    }
+
+
     return (
         <li className='PayHistoryList'>
             <div className='content'>{content}</div>
             <div className='date'>{`${month}.${day}`}</div>
-            <div className='payment'>-{payment}원</div>
+            <div className='payment'>-{payment_amount}원</div>
             <div className='edit' onClick={() => setIsMenuActive(true)}>
                 <MdMoreVert/>
             </div>
@@ -50,13 +51,13 @@ function PayHistoryList({payInfo,userId,setPaymentLists}:PayHistoryListPropsType
                     <li className='dropMenuList' onClick={modalActive}>
                         지출내역 수정하기
                     </li>
-                    <li className='dropMenuList' onClick={deleteMenu}>
+                    <li className='dropMenuList' onClick={deletePayHistory}>
                         지출내역 삭제하기
                     </li>
                 </ul>
             }
             {isModalActive && 
-            <PayHistoryModal title='지출내역 수정하기' submitPayHistory={editPayHistory} setIsModalActive={setIsModalActive}/>}
+            <PayHistoryModal title='지출내역 수정하기' submitPayHistory={editPayHistory} setModalActive={setIsModalActive}/>}
         </li>
     );
 }

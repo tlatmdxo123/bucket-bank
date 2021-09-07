@@ -2,6 +2,7 @@ import {SetUserAction,SET_USER_DATA,UserInfoType} from '../types/setUserTypes'
 
 const initialState:UserInfoType = {
     _id:'',
+    created_at:'',
     avatarType:'bear',
     name:'',
     pay:'',

@@ -31,10 +31,11 @@ export default class PaymentsDAO {
 
   static async addPaymentsList(info) {
     try {
-      await payments.insertOne({
+      const res = await payments.insertOne({
         ...info,
         user_id: new ObjectId(info.user_id),
       });
+      return res.ops[0]
     } catch (error) {
       return new Error(error);
     }

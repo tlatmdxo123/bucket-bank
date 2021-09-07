@@ -34,6 +34,14 @@ export const unformatDate = (date:string) => {
     return year+month
 }
 
+export const isSameDate = (date1:string,date2:string) => {
+    const year = date1.slice(0,4)
+    const month = date1.slice(4,6)
+
+    return (year+month) === date2
+}
+
+
 export const getFullCurrentDate = () => {
     const currentDate = new Date()
     const year = currentDate.getFullYear()
