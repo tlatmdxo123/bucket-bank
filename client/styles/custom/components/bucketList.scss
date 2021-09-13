@@ -1,0 +1,88 @@
+.BucketList{
+    position: relative;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 24px;
+    margin-bottom: 30px;
+    .bucket-info{
+        padding: 42px 61px 53px 53px;
+        border-bottom: 1px solid $light-gray;
+    }
+    .main-info{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 53px;
+        .content{
+            font-size: 22px;
+            color:$font-bk-gray;
+            font-weight: bold;
+        }
+        .date{
+            font-size: 18px;
+            color:$font-lt-gray;
+        }
+        .current{
+            font-size: 32px;
+            font-weight: bold;
+            color:$blue;
+        }
+    }
+    .status-info{
+        .status{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            span{
+                font-size: 18px;
+                color:$font-md-gray;
+            }
+        }
+        .status-bar{
+            height: 2px;
+            width: 100%;
+            background: $light-gray;
+            .current-bar{
+                background: $blue;
+                position: relative;
+                height: inherit;
+                .end-point{
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 50%;
+                    background: $blue;
+                }
+            }
+        }
+    }
+    .buttons{
+        display: flex;
+        width: 100%;
+        button{
+            width: 50%;
+            font-size: 16px;
+            padding: 33px 0;
+            &:first-child{
+                border-right: 1px solid $light-gray;
+            }
+            &.deposit{
+                color:$blue
+            }
+            &.withdraw{
+                color:$red;
+            }
+        }
+
+    }
+    .dropmenu{
+        position: absolute;
+        right: 23px;
+        top: 21px;
+        color:$gray;
+        font-size: 23px;
+    }
+    
+}

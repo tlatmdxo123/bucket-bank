@@ -1,17 +1,3 @@
 .PayHistoryLists{
     width: 100%;
-    .button{
-        width: 100%;
-        height: 53px;
-        border-radius: 10px;
-        background: $lt-md-gray;
-        border: 1px solid $md-gray;
-        font-size: 30px;
-        font-weight: bold;
-        color:$md-gray;
-        @include align-center;
-        &:hover{
-            background:darken($lt-md-gray,3%);
-        }
-    }
 }

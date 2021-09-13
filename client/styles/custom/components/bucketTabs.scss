@@ -1,0 +1,19 @@
+.BucketTabs{
+    display: flex;
+    width: 100%;
+    background:$lt-md-gray;
+    border-radius: 20px;
+    border:1px solid $light-gray;
+    margin-bottom: 45px;
+    button{
+        width: 50%;
+        border-radius: 20px;
+        color:$font-lt-gray;
+        padding: 25px 0;
+        text-align: center;
+        &.current{
+            background: $blue;
+            color:#ffffff;
+        }
+    }
+}

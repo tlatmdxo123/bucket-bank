@@ -1,12 +1,13 @@
 import React from 'react';
+import BucketListsContainer from '../containers/BucketListsContainer';
 import MenuContainer from '../containers/MenuContainer';
 
 function BucketListPage() {
     return (
-        <div>
+        <>
             <MenuContainer/>
-            BucketListPage
-        </div>
+            <BucketListsContainer/>
+        </>
     );
 }
 
