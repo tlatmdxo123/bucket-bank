@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { AddPaymentType, PayListTypes } from '../types/payTypes';
 import PayHistoryIndex from './PayHistoryIndex';
 import PayHistoryList from './PayHistoryList';
-import {MdAdd} from 'react-icons/md'
 import PayHistoryModal from './PayHistoryModal';
 import { addPayData } from '../actions/PayHistoryActions';
 import { useDispatch } from 'react-redux';
-import RemainPay from './RemainPay';
+import AddButton from './common/AddButton';
 
 type PayHistoryListsPropsTypes = {
     paymentLists:Array<PayListTypes>,
@@ -23,8 +22,6 @@ function PayHistoryLists({paymentLists,user_id,isCurrent}:PayHistoryListsPropsTy
         dispatch(addPayData(data))
         setActive(false);
     }
-
-     
     return (
         <div className='PayHistoryLists'>
             <PayHistoryIndex/>
@@ -34,9 +31,7 @@ function PayHistoryLists({paymentLists,user_id,isCurrent}:PayHistoryListsPropsTy
                     return <PayHistoryList key={payInfo._id} payInfo={payInfo}/>
                 })}
             </ul>
-            {isCurrent && <button className='button' type='button' onClick={() => setActive(true)}>
-                <MdAdd/>
-            </button>}
+            {isCurrent && <AddButton onClickHandler={() => setActive(true)} size='medium'/>}
             {active && 
             <PayHistoryModal title='지출내역 추가하기' submitPayHistory={addPaymentList} setModalActive={setActive}/>}
             

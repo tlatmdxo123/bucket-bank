@@ -1,0 +1,20 @@
+.AddButton{
+    width: 100%;
+    border-radius: 10px;
+    background: $lt-md-gray;
+    border: 1px solid $md-gray;
+    font-weight: bold;
+    color:$md-gray;
+    @include align-center;
+    &:hover{
+        background:darken($lt-md-gray,3%);
+    }
+    &.big{
+        font-size: 38px;
+        padding: 9px 0;
+    }
+    &.medium{
+        font-size: 33px;
+        padding: 6px 0;
+    }
+}
