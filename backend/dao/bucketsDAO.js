@@ -17,22 +17,13 @@ export default class BucketsDAO {
     }
   }
 
-  static async getBuckets(id = 0, completed = false) {
+  static async getBuckets(id = 0) {
     let response;
 
     try {
-      if (completed) {
-        response = await buckets.find({
-          user_id: { $eq: new ObjectId(id) },
-          completed: { $eq: true },
-        });
-      } else {
-        response = await buckets.find({
-          user_id: { $eq: new ObjectId(id) },
-          completed: { $eq: false },
-        });
-      }
-
+      response = await buckets.find({
+        user_id: { $eq: new ObjectId(id) },
+      });
       const bucketLists = response.toArray();
       return bucketLists;
     } catch (error) {

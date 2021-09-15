@@ -3,12 +3,11 @@ import BucketsDAO from "../dao/bucketsDAO.js";
 export default class BucketsController {
   static async getBucketsLists(req, res, next) {
     const userId = req.query.id;
-    const completed = req.query.completed;
 
-    const response = await BucketsDAO.getBuckets(userId, completed);
+    const response = await BucketsDAO.getBuckets(userId);
 
     const buckets = response.map((res) => {
-      const { _id, content, target_amount, current_amount, created_at } = res;
+      const { _id, content, target_amount, current_amount, created_at,completed } = res;
       const month =
         created_at.getMonth() + 1 >= 10
           ? created_at.getMonth() + 1
@@ -24,6 +23,7 @@ export default class BucketsController {
         target: target_amount,
         current: current_amount,
         date: created_at.getFullYear() + "-" + month + "-" + day,
+        completed,
       };
     });
 

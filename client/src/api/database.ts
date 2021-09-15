@@ -29,3 +29,7 @@ export const addPayment = async <T>(info:T) => {
 export const deletePayment = async (id:string) => {
     return await db.delete(`/payments?id=${id}`)
 }
+
+export const getBuckets = async (id:string) => {
+    return (await db.get(`/buckets?id=${id}`)).data
+}
