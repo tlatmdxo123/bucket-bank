@@ -1,7 +1,7 @@
 import React from 'react';
 import BucketList from './BucketList';
 
-function BucketLists() {
+function BucketLists({completed}:{completed:boolean}) {
     const lists = [
     {
         "id": "60b0bb831c19321f98b09393",
@@ -76,7 +76,7 @@ function BucketLists() {
 ]
     return (
         <ul className='BucketLists'>
-            {lists.map(list => <BucketList bucketInfo={list}/>)}
+            {lists.map(list => <BucketList bucketInfo={list} completed={completed}/>)}
         </ul>
     );
 }

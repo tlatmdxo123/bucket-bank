@@ -2,7 +2,7 @@ import React from 'react';
 import { bucketListType } from '../types/bucketType';
 import {MdMoreVert} from 'react-icons/md'
 
-function BucketList({bucketInfo}:{bucketInfo:bucketListType}) {
+function BucketList({bucketInfo,completed=false}:{bucketInfo:bucketListType,completed:boolean}) {
     const {id,content,target,current,date} = bucketInfo
     const rate = ((current/target)*100).toFixed()
     return (
@@ -17,7 +17,7 @@ function BucketList({bucketInfo}:{bucketInfo:bucketListType}) {
                         {current}원
                     </p>
                 </div>
-                <div className="status-info">
+                {!completed && <div className="status-info">
                     <div className="status">
                         <span className='target'>
                         목표달성 금액:{target}
@@ -33,17 +33,17 @@ function BucketList({bucketInfo}:{bucketInfo:bucketListType}) {
                         </div>
                     </div>
                     
-                </div>
+                </div>}
             </div>
             
-            <div className="buttons">
+            {!completed && <div className="buttons">
                 <button className='deposit' type='button'>입금</button>
                 <button className='withdraw' type='button'>출금</button>
-            </div>
+            </div>}
 
-            <div className='dropmenu'>
+            {!completed && <div className='dropmenu'>
                 <MdMoreVert/>
-            </div>
+            </div>}
 
         </li>
     );
