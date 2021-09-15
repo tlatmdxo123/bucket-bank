@@ -1,4 +1,6 @@
-export const SET_USER_DATA = 'SET_USER_DATA' as const
+export const FETCH_USER = 'FETCH_USER' as const
+export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS' as const
+export const FETCH_USER_ERROR = 'FETCH_USER_ERROR' as const
 
 
 export type UserInfoType = {

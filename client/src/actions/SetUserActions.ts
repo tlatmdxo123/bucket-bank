@@ -1,8 +1,8 @@
-import {SetUserDataType,UserInfoType, SET_USER_DATA} from '../types/setUserTypes'
+import {FETCH_USER} from '../types/setUserTypes'
 
-export const setUserInfoAction = (info:UserInfoType):SetUserDataType => {
+export const fetchUser = (id:string):{type:string,payload:string} => {
     return {
-        type:SET_USER_DATA,
-        payload:info,
+        type:FETCH_USER,
+        payload:id,
     }
 }

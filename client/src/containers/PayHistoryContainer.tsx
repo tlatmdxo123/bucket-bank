@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import {useUserInfo} from '../hooks/user'
 import { getCurrentDate, getDateFromCreatedToCurrent, isSameDate } from '../utils/date';
 import PayHistory from '../components/PayHistory';
 import { fetchPayData } from '../actions/PayHistoryActions';
 import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../reducers';
 import { PayListTypes } from '../types/payTypes';
+import { selectUser } from '../selectors/userSelectors';
 function PayHistoryContainer() {
     const dispatch = useDispatch()
-    const {_id:userId,created_at,date:pay_date,pay,current_pay} = useUserInfo();
+    const {_id:userId,created_at,date:pay_date,pay,current_pay} = useSelector(selectUser)
     const [date,setDate] = useState('')
     const [dateLists,setDateLists] = useState<Array<string>>()
     const [remain,setRemain] = useState(0)
